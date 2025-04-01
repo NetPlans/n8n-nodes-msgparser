@@ -1,4 +1,6 @@
-Copyright 2022 n8n
+Copyright 2025 NetPlans GmbH (the code for the node itself)
+
+Copyright 2022 n8n (Base structure of n8n community node)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in

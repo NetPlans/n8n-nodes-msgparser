@@ -1,19 +1,19 @@
 {
-  "name": "n8n-nodes-<...>",
-  "version": "0.1.0",
-  "description": "",
+  "name": "n8n-nodes-msgparser",
+  "version": "1.0.0",
+  "description": "n8n community node for parsing .msg files (outlook mails, contacts, ...)",
   "keywords": [
     "n8n-community-node-package"
   ],
   "license": "MIT",
   "homepage": "",
   "author": {
-    "name": "",
-    "email": ""
+    "name": "Felix Stadthaus",
+    "email": "felix.stadthaus@netplans.de"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/<...>/n8n-nodes-<...>.git"
+    "url": "https://github.com/NetPlans/n8n-nodes-msgparser.git"
   },
   "engines": {
     "node": ">=18.10",
@@ -35,13 +35,8 @@
   ],
   "n8n": {
     "n8nNodesApiVersion": 1,
-    "credentials": [
-      "dist/credentials/ExampleCredentialsApi.credentials.js",
-      "dist/credentials/HttpBinApi.credentials.js"
-    ],
     "nodes": [
-      "dist/nodes/ExampleNode/ExampleNode.node.js",
-      "dist/nodes/HttpBin/HttpBin.node.js"
+      "dist/nodes/MsgParser/MsgParser.node.js"
     ]
   },
   "devDependencies": {
@@ -54,5 +49,9 @@
   },
   "peerDependencies": {
     "n8n-workflow": "*"
+  },
+  "dependencies": {
+    "@kenjiuno/msgreader": "^1.22.0",
+    "base64-arraybuffer": "^1.0.2"
   }
 }
