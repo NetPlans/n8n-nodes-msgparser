@@ -51,7 +51,6 @@
     "n8n-workflow": "*"
   },
   "dependencies": {
-    "@kenjiuno/msgreader": "^1.22.0",
-    "base64-arraybuffer": "^1.0.2"
+    "@kenjiuno/msgreader": "^1.22.0"
   }
 }

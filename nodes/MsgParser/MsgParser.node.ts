@@ -5,7 +5,6 @@ import {
 	INodeType,
 	INodeTypeDescription, NodeOperationError,
 } from 'n8n-workflow';
-import { decode } from 'base64-arraybuffer';
 
 export class MsgParser implements INodeType {
 	description: INodeTypeDescription = {
@@ -20,20 +19,30 @@ export class MsgParser implements INodeType {
 		},
 		inputs: ['main'],
 		outputs: ['main'],
-		properties: []
+		properties: [
+			// Node properties which the user gets displayed and
+			// can change on the node.
+			{
+				displayName: 'Input Binary Field',
+				name: 'inputBinaryFieldName',
+				type: 'string',
+				default: 'data',
+				placeholder: 'data',
+				description: 'The name of the input binary field containing the file to be extracted',
+			},
+		],
 	};
 
-	// The function below is responsible for actually doing whatever this node
-	// is supposed to do. In this case, we're just appending the `myString` property
-	// with whatever the user has entered.
-	// You can make async calls and use `await`.
+	// The function below is responsible for actually executing the node
 	async execute(this: IExecuteFunctions): Promise<INodeExecutionData[][]> {
 		const items = this.getInputData();
 
-		items.forEach((item, itemIndex) => {
+		for (let itemIndex = 0; itemIndex < items.length; itemIndex++) {
 			try {
+				const item: INodeExecutionData = items[itemIndex];
+
 				if(item.binary) {
-					const fileData = new MsgReader(decode(item.binary?.data?.data)).getFileData();
+					const fileData = new MsgReader(await this.helpers.getBinaryDataBuffer(0, (this.getNodeParameter('inputBinaryFieldName', itemIndex, 'data') as string))).getFileData();
 					item.json = {
 						...fileData
 					};
@@ -57,7 +66,7 @@ export class MsgParser implements INodeType {
 					});
 				}
 			}
-		});
+		}
 
 		return [items];
 	}
