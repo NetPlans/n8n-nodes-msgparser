@@ -1,6 +1,6 @@
 {
   "name": "@netplans/n8n-nodes-msgparser",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "n8n community node for parsing .msg files (outlook mails, contacts, ...)",
   "keywords": [
     "n8n-community-node-package"
