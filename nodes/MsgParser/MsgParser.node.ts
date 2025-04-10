@@ -42,7 +42,7 @@ export class MsgParser implements INodeType {
 				const item: INodeExecutionData = items[itemIndex];
 
 				if(item.binary) {
-					const fileData = new MsgReader(await this.helpers.getBinaryDataBuffer(0, (this.getNodeParameter('inputBinaryFieldName', itemIndex, 'data') as string))).getFileData();
+					const fileData = new MsgReader(await this.helpers.getBinaryDataBuffer(itemIndex, (this.getNodeParameter('inputBinaryFieldName', itemIndex, 'data') as string))).getFileData();
 					item.json = {
 						...fileData
 					};
