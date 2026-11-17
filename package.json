@@ -1,56 +1,66 @@
 {
-  "name": "@netplans/n8n-nodes-msgparser",
-  "version": "1.0.2",
-  "description": "n8n community node for parsing .msg files (outlook mails, contacts, ...)",
-  "keywords": [
-    "n8n-community-node-package"
-  ],
-  "license": "MIT",
-  "homepage": "",
-  "author": {
-    "name": "Felix Stadthaus",
-    "email": "felix.stadthaus@netplans.de"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/NetPlans/n8n-nodes-msgparser.git"
-  },
-  "engines": {
-    "node": ">=18.10",
-    "pnpm": ">=9.1"
-  },
-  "packageManager": "pnpm@9.1.4",
-  "main": "index.js",
-  "scripts": {
-    "preinstall": "npx only-allow pnpm",
-    "build": "tsc && gulp build:icons",
-    "dev": "tsc --watch",
-    "format": "prettier nodes credentials --write",
-    "lint": "eslint nodes credentials package.json",
-    "lintfix": "eslint nodes credentials package.json --fix",
-    "prepublishOnly": "pnpm build && pnpm lint -c .eslintrc.prepublish.js nodes credentials package.json"
-  },
-  "files": [
-    "dist"
-  ],
-  "n8n": {
-    "n8nNodesApiVersion": 1,
-    "nodes": [
-      "dist/nodes/MsgParser/MsgParser.node.js"
-    ]
-  },
-  "devDependencies": {
-    "@typescript-eslint/parser": "^7.15.0",
-    "eslint": "^8.56.0",
-    "eslint-plugin-n8n-nodes-base": "^1.16.1",
-    "gulp": "^4.0.2",
-    "prettier": "^3.3.2",
-    "typescript": "^5.5.3"
-  },
-  "peerDependencies": {
-    "n8n-workflow": "*"
-  },
-  "dependencies": {
-    "@kenjiuno/msgreader": "^1.22.0"
-  }
+	"name": "@netplans/n8n-nodes-msgparser",
+	"version": "1.0.2",
+	"description": "n8n community node for parsing .msg files (outlook mails, contacts, ...)",
+	"keywords": [
+		"n8n-community-node-package"
+	],
+	"license": "MIT",
+	"homepage": "",
+	"author": {
+		"name": "Felix Stadthaus",
+		"email": "felix.stadthaus@netplans.de"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/NetPlans/n8n-nodes-msgparser.git"
+	},
+	"engines": {
+		"node": ">=18.10"
+	},
+	"main": "index.js",
+	"scripts": {
+		"preinstall": "npx only-allow npm",
+		"build": "tsc && gulp build:icons",
+		"dev": "tsc --watch",
+		"format": "prettier nodes credentials --write",
+		"lint": "eslint nodes credentials package.json",
+		"lintfix": "eslint nodes credentials package.json --fix",
+		"prepublishOnly": "npm build && npm lint -c .eslintrc.prepublish.js nodes credentials package.json"
+	},
+	"files": [
+		"dist"
+	],
+	"n8n": {
+		"n8nNodesApiVersion": 1,
+		"nodes": [
+			"dist/nodes/MsgParser/MsgParser.node.js"
+		]
+	},
+	"devDependencies": {
+		"@typescript-eslint/parser": "^7.15.0",
+		"eslint": "^8.56.0",
+		"eslint-plugin-n8n-nodes-base": "^1.16.1",
+		"gulp": "^4.0.2",
+		"prettier": "^3.3.2",
+		"typescript": "^5.5.3"
+	},
+	"peerDependencies": {
+		"n8n-workflow": "^2.16.0"
+	},
+	"dependencies": {
+		"@kenjiuno/msgreader": "^1.22.0"
+	},
+	"overrides": {
+		"n8n-workflow": {
+			"axios": "^1.20.0"
+		}
+	},
+	"allowScripts": {
+		"cpu-features@0.0.10": true,
+		"es5-ext@0.10.64": true,
+		"eslint-plugin-n8n-nodes-base@1.16.6": true,
+		"isolated-vm@7.0.1": true,
+		"ssh2@1.15.0": true
+	}
 }
